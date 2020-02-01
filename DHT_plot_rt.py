@@ -4,8 +4,6 @@
 # https://learn.sparkfun.com/tutorials/graph-sensor-data-with-python-and-matplotlib/update-a-graph-in-real-time
 
 
-#import argparse
-#import logging
 import sys
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
