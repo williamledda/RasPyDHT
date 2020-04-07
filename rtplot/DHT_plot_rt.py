@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 import Adafruit_DHT
 import datetime as dt
-from DataSet import DataSet
+from .DataSet import DataSet
 
 fig = plt.figure()
 tPlot = fig.add_subplot(2, 1, 1)

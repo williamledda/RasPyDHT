@@ -5,8 +5,7 @@ import time
 import argparse
 import Adafruit_DHT
 import paho.mqtt.client as mqtt
-
-from DHT_lcd1602 import DHTLcd
+from .DHT_lcd1602 import DHTLcd
 
 
 # Parse command line parameters.
