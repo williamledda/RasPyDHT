@@ -5,19 +5,18 @@ import time
 import argparse
 import Adafruit_DHT
 import paho.mqtt.client as mqtt
-
-from DHT_lcd1602 import DHTLcd
+from .DHT_lcd1602 import DHTLcd
 
 
 # Parse command line parameters.
 def parse_cmd_option():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--type', default='22', help='dht sensor type (11, 22, or 2302)')
-    parser.add_argument('--gpio', type=int, default=4, help='GPIO port number')
-    parser.add_argument('--sleep', type=int, default=2, help='Delay (s) between two readings')
-    parser.add_argument('--broker', default=None, help='MQTT broker host')
+    parser.add_argument('--type', default='22', help='dht sensor type (11, 22, or 2302, default 22)')
+    parser.add_argument('--gpio', type=int, default=4, help='GPIO port number, default 4')
+    parser.add_argument('--sleep', type=int, default=2, help='Delay (s) between two readings, default 2')
+    parser.add_argument('--broker', default=None, help='MQTT broker host, default None')
     parser.add_argument('--verbose', action="store_true", help='Log info into console')
-    parser.add_argument('--room', default='Room_1', help='Room name')
+    parser.add_argument('--room', default='Room_1', help='Room name, default Room_1')
     return parser.parse_args()
 
 
@@ -66,7 +65,7 @@ def mqtt_stop(args, client):
         client.loop_stop()
 
 
-if __name__ == "__main__":
+def main():
     sensor_type = {'11': Adafruit_DHT.DHT11,
                    '22': Adafruit_DHT.DHT22,
                    '2302': Adafruit_DHT.AM2302}
@@ -109,3 +108,6 @@ if __name__ == "__main__":
 
         sys.stdout.write("\rComplete!            \n")
         sys.exit(1)
+
+if __name__ == "__main__":
+    main()

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import LCD1602
+from . import LCD1602
 import time
 import datetime as dt
 import threading
