@@ -1,0 +1,13 @@
+[Unit]
+Description=RasPyDHT Service
+Requires=systemd-modules-load.service
+After=systemd-modules.load.service network.target network-online.target
+
+[Service]
+Type=simple
+KillSignal=SIGINT
+ExecStart=/usr/bin/python3 -m raspydht --broker <IP address of mqtt broker if any> --room <Room description>
+SyslogIdentifier=RasPyDHT
+
+[Install]
+WantedBy=multi-user.target
