@@ -3,6 +3,7 @@ from . import LCD1602
 import time
 import datetime as dt
 import threading
+from . import _version
 
 
 class DHTLcd(threading.Thread):
@@ -11,9 +12,13 @@ class DHTLcd(threading.Thread):
 
     def setup(self):
         LCD1602.init(0x27, 1)  # init(slave address, background light)
-        LCD1602.write(0, 0, 'Welcome MyDHTPi!')
-        LCD1602.write(1, 1, 'Room ' + self.name)
-        time.sleep(2)
+        LCD1602.write(0, 0, 'Welcome!!')
+        LCD1602.write(0, 1, 'RasPyDHT ' + _version.version)
+        time.sleep(2.5)
+        LCD1602.clear()
+        LCD1602.write(0, 0, 'Room ')
+        LCD1602.write(0, 1, self.name)
+        time.sleep(2.5)
 
     def run(self):
         self.setup()
